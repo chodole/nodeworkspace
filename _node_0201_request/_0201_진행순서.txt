@@ -1,0 +1,39 @@
+-------------------------------------------------------
+-- [_node_0201_request]
+-------------------------------------------------------
+[1] 터미널 실행
+[2] npm install express (서버설치 npm 노드 패키지 매니저) 
+    (package.json 파일에서 설치확인)
+[3] npm install ejs
+[4] 서버 실행 명령어
+    * 각각 따로 실행한다.
+    [4-1] node myserver1.js
+    [4-2] node myserver2.js
+    [4-3] node myserver3.js
+    [4-4] node myserver4.js
+[5] 크롬브라우저 > http://localhost:3201
+[6] ctrl + c (서버종료)
+-------------------------------------------------------
+
+
+app.get("/formTestPro", function(req, res){ 
+      //console.log(req.query.age)
+
+    // request 에서 입력받은 변수를 저장해서 다음페이지로 이동한다. 
+    var renderData = {
+        "age" : req.query.age
+    };
+    res.render("_0101_formTestPro.ejs" , renderData); 
+});
+
+
+
+app.get("/compareNumberPro", function(req, res){ 
+    //console.log(req.query.num1)
+    //console.log(req.query.num2)
+    var renderData = {
+        "num1" : req.query.num1,
+        "num2" : req.query.num2
+    };
+    res.render("_0103_compareNumberPro.ejs" , renderData); 
+});

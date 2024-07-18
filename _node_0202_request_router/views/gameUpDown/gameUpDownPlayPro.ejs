@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div align="center">
+        <%
+
+            var msg = ""
+            ran = parseInt(ran);
+            result = parseInt(result);
+            gameCount = parseInt(gameCount);
+            console.log("ran="+ran+", result="+result);
+
+            if(ran > result){
+                msg = "UP";
+            }else if(ran < result) {
+                msg = "DOWN";
+            }else if(ran == result){
+                msg = "정답";
+            }
+        %>
+
+        <h2>[<%= gameCount %>]번째</h2>
+
+        <h4><%= msg %></h4>
+        <% if(ran == result) { %>
+            <h4>종료</h4>
+            <a href="gameUpDownMain">처음으로</a>
+        <% }else { %>
+            <a href="gameUpDownPlay?gameCount=<%=gameCount+1%>&ran=<%=ran%>">돌아가기</a>
+        <% } %>
+
+    </div>
+</body>
+</html>

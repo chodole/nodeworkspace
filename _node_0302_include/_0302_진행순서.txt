@@ -1,0 +1,36 @@
+-------------------------------------------------------
+-- [_node_0302_include]
+-------------------------------------------------------
+[1] 터미널 실행
+[2] npm install express (서버설치 npm 노드 패키지 매니저) 
+    (package.json 파일에서 설치확인)
+[3] npm install ejs
+[4] npm install express-session
+[5] node myserver.js
+[6] 크롬브라우저 > http://localhost:3302
+[7] ctrl + c (서버종료)
+-------------------------------------------------------
+
+// img폴더 경로 셋팅
+app.use(express.static('./img'));	
+
+
+-------------------------------------------------------
+
+<!DOCTYPE html >
+<html>
+<head>
+<meta charset="UTF-8">
+<title>포트폴리오</title>
+</head>
+<body>
+    <%- include('_0102_top.ejs') %>
+    <%- include('_0104_nav.ejs') %>
+	
+	<br><br>
+	<div align="center">
+		<img src="타이틀.jpg">
+	</div>
+	<%- include('_0103_footer.ejs') %>
+</body>
+</html>

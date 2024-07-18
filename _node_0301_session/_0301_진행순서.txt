@@ -1,0 +1,49 @@
+-------------------------------------------------------
+-- [_node_0301_session]
+-------------------------------------------------------
+[1] 터미널 실행
+[2] npm install express (서버설치 npm 노드 패키지 매니저) 
+    (package.json 파일에서 설치확인)
+[3] npm install ejs
+[4] npm install express-session
+[5] 서버 실행 명령어
+    * 각각 따로 실행한다.
+    [5-1] node myserver1.js
+    [5-2] node myserver2.js
+    [5-3] node myserver3.js
+[6] 크롬브라우저 > http://localhost:3301
+[7] ctrl + c (서버종료)
+-------------------------------------------------------
+
+// session 세팅
+var session = require("express-session");
+app.use(session({
+	secret : "abcdefg", 
+	resave : false, 
+	saveUninitialized : false 
+}));
+
+-------------------------------------------------------
+
+// 라우터 세팅
+app.get("/", function(req, res){ 
+    // session 디비 세팅 (난중에 database 로 변경된다.)
+    socreDB = [65,45,88]; // 임의로 데이터 3개를 저장후 시작했다.
+    req.session.scoreDB = socreDB // db 배열
+   
+    res.redirect("scoreListAll"); // res.redirect() 는 라우터이동.
+});
+
+-------------------------------------------------------
+
+app.get("/scoreAddRandomPro", function(req, res){  
+    var scoreDB = req.session.scoreDB
+    var ran = Math.floor(Math.random() * 101)
+    scoreDB.push(ran)
+    
+    // 변경된 내용이 있으면 다시 저장한다. 
+    req.session.scoreDB = scoreDB
+
+    // Pro 요청은 ejs 파일이 필요없기때문에 redirect 로 원래 페이지로 보낸다.
+    res.redirect("scoreListAll");
+});

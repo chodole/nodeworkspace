@@ -1,0 +1,50 @@
+-------------------------------------------------------
+-- [_node_0202_request_router]
+-------------------------------------------------------
+[1] 터미널 실행
+[2] npm install express (서버설치 npm 노드 패키지 매니저) 
+    (package.json 파일에서 설치확인)
+[3] npm install ejs
+[4] node myserver.js
+[5] 크롬브라우저 > http://localhost:3202
+[6] ctrl + c (서버종료)
+-------------------------------------------------------
+
+
+
+// 라우터 폴더 세팅
+require("./router/game99")(app);
+require("./router/gameBR31")(app);
+
+
+--------------------------------------------------------
+
+//router 폴더 세팅
+module.exports = function(app){
+
+    app.get("/game99Main", function(req, res){  
+        
+        res.render("game99/game99Main.ejs" );
+    });
+
+    app.get("/game99Play", function(req, res){  
+        var renderData = {
+            "scoreCount" : req.query.scoreCount,
+            "gameCount" : req.query.gameCount
+        };
+
+        res.render("game99/game99Play.ejs" , renderData);
+    });
+
+    app.get("/game99PlayPro", function(req, res){  
+        var renderData = {
+            "x" :  req.query.x,
+            "y" :  req.query.y,
+            "z" :  req.query.z,
+            "gameCount" :  req.query.gameCount,
+            "scoreCount" :  req.query.scoreCount
+        };
+
+        res.render("game99/game99PlayPro.ejs" , renderData);
+    });
+};
